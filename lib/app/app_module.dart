@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movies/app/modules/login/home/home.dart';
 
 import 'modules/login/lodgin.dart';
 import 'modules/splash/splash.dart';
@@ -16,6 +17,10 @@ class AppModule extends Module {
     r.module(
       '/login/',
       module: LoginModule(),
+    );
+    r.module(
+      '/home/',
+      module: HomeModule(),
     );
   }
 }
