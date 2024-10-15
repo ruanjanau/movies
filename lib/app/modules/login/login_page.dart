@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/app/core/routes/routes.dart';
 
 import '../../core/ui/widgets/widgets.dart';
+import '../../core/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -13,7 +14,7 @@ class LoginPage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/login.png',
+              Assets.login,
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,

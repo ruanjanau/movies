@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movies/app/modules/login/home/home.dart';
+import 'package:movies/app/modules/home/home.dart';
 
 import 'modules/login/lodgin.dart';
 import 'modules/splash/splash.dart';
