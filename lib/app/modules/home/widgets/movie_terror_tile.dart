@@ -24,6 +24,13 @@ class MovieTerrorTile extends StatelessWidget {
               ),
               height: 180.0,
               width: 126.0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: Image.network(
+                  'https://www.ucicinemas.com.br/Content/Upload/Filmes/Posters/11335/filme_11335.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           );
         },
