@@ -1,57 +1,34 @@
-class MovieData {
-  final List<MovieCategory>? data;
-
-  MovieData({
-    this.data,
-  });
-
-  factory MovieData.fromJson(Map<String, dynamic> json) {
-    return MovieData(
-      data: (json['data'] as List).map((categoryJson) {
-        final categoryKey = categoryJson.keys.first;
-        return MovieCategory(
-          category: categoryKey,
-          movies: (categoryJson[categoryKey] as List)
-              .map((movieJson) => Movie.fromJson(movieJson))
-              .toList(),
-        );
-      }).toList(),
-    );
-  }
-}
-
-class MovieCategory {
-  final String? category;
-  final List<Movie>? movies;
-
-  MovieCategory({
-    this.category,
-    this.movies,
-  });
-}
-
-class Movie {
+class MoviesModel {
   final int? id;
   final String? name;
   final String? details;
-  final double? stars;
+  final bool? onDisplay;
+  final bool? shortly;
   final String? image;
+  final double? stars;
+  final String? category;
 
-  Movie({
-     this.id,
-     this.name,
-     this.details,
-     this.stars,
-     this.image,
+  MoviesModel({
+    this.id,
+    this.name,
+    this.details,
+    this.image,
+    this.stars,
+    this.category,
+    this.onDisplay,
+    this.shortly,
   });
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    return Movie(
-      id: json['id'],
-      name: json['name'],
-      details: json['details'],
-      stars: json['stars'].toDouble(),
-      image: json['image'],
+  factory MoviesModel.fromJson(Map<String, dynamic> json) {
+    return MoviesModel(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      details: json['details'] as String,
+      image: json['image'] as String,
+      stars: json['stars'] as double,
+      category: json['category'] as String,
+      onDisplay: json['on_display'] as bool,
+      shortly: json['shortly'] as bool,
     );
   }
 }

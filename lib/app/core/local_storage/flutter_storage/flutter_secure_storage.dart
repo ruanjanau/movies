@@ -1,6 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import 'local_storage.dart';
+import '../local_storage.dart';
 
 class FlutterSecureStorageImpl implements LocalSecureStorage {
   FlutterSecureStorage get _instance => const FlutterSecureStorage();

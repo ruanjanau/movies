@@ -7,8 +7,8 @@ import 'repositories/repositories.dart';
 class HomeModule extends Module {
   @override
   void binds(i) {
-    i.add(HomeController.new);
-    i.addLazySingleton(HomeRepository.new);
+    i.add(HomeRepository.new);
+    i.addLazySingleton(HomeController.new);
   }
 
   @override

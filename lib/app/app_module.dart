@@ -1,12 +1,20 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movies/app/modules/home/home.dart';
 
-import 'modules/login/lodgin.dart';
-import 'modules/splash/splash.dart';
+import 'core/adapters/adapters.dart';
+import 'core/local_storage/flutter_storage/flutter_secure_storage.dart';
+import 'core/local_storage/local_storage.dart';
+import 'core/local_storage/shared_preferences/shared_preferences.dart';
+import 'modules/home/home.dart';
+import 'modules/login/login_module.dart';
+import 'modules/splash/splash_module.dart';
 
 class AppModule extends Module {
   @override
-  void binds(i) {}
+  void binds(i) {
+    i.add<HttpAdapter>(HttpAdapterImpl.new);
+    i.addLazySingleton<LocalSecureStorage>(FlutterSecureStorageImpl.new);
+    i.addLazySingleton<LocalStorage>(SharedPreferencesLocalStorageImpl.new);
+  }
 
   @override
   void routes(RouteManager r) {

@@ -3,7 +3,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart' as dio;
 
-import '../local_storage/storage.dart';
+import '../helpers/helpers.dart';
+import '../local_storage/local_storage.dart';
 import 'adapters.dart';
 
 class HttpAdapterImpl implements HttpAdapter {
@@ -11,17 +12,13 @@ class HttpAdapterImpl implements HttpAdapter {
 
   final _dio = dio.Dio(
     dio.BaseOptions(
+      baseUrl: 'https://6573803a063f876cec9cf9f6.mockapi.io/',
       receiveDataWhenStatusError: true,
-      // TODO: Capturar timeout do remote config
       sendTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       connectTimeout: const Duration(seconds: 30),
       contentType: dio.Headers.jsonContentType,
       followRedirects: false,
-      headers: {
-        'accept': dio.Headers.jsonContentType,
-        // 'user-agent': Platform.operatingSystem,
-      },
     ),
   );
 
@@ -30,7 +27,6 @@ class HttpAdapterImpl implements HttpAdapter {
   }) : _localSecureStore = localSecureStore;
 
   dio.Dio get dioInstance {
-    // TODO: Implementar interceptors
     return _dio;
   }
 
@@ -91,7 +87,7 @@ class HttpAdapterImpl implements HttpAdapter {
       }
 
       if (response.data is Map && response.data['message'] != null) {
-        // Messages.success(response.data['message']);
+        Messages.success(response.data['message']);
       }
 
       return response;

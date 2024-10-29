@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies/app/core/models/movies_model.dart';
 
-class CardMovieTile extends StatelessWidget {
+import '../../../core/models/models.dart';
+
+class CardMovieShortly extends StatelessWidget {
   final MoviesModel movie;
-  const CardMovieTile({super.key, required this.movie});
+  const CardMovieShortly({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {

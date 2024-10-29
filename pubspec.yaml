@@ -24,6 +24,9 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   grock: ^0.5.7
   flutter_screenutil: ^5.9.3
+  flutter_mobx: ^2.2.1+1
+  shared_preferences: ^2.3.2
+  shimmer: ^3.0.0
 
 
 dev_dependencies:

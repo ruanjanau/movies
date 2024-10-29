@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/app/core/life_cycle/life_cycle.dart';
-import 'package:movies/app/modules/home/widgets/genres_tile.dart';
+import 'package:movies/app/modules/home/widgets/card_movie_list_shortly.dart';
 
 import '../../core/utils/utils.dart';
 import 'controllers/home_controller.dart';
-import 'home.dart';
+import 'widgets/card_movie_list.dart';
+import 'widgets/genres_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,53 +19,33 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      context,
+      designSize: const Size(146, 210),
+      minTextAdapt: true,
+    );
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
+          child: Observer(builder: (context) {
+            return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'O que você quer assistir?',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
                 const SizedBox(height: 16.0),
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
-                      children: [
-                        const Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Digite o nome do filme...',
-                              hintStyle: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.search, color: Colors.white),
-                        ),
-                      ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    'O que nós vamos assistir hoje?',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
+                const SizedBox(height: 16.0),
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -70,146 +53,117 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                         genre: 'Ação',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 10.0),
+                      Spacer(),
                       GenresTile(
-                        genre: 'Ação',
+                        genre: 'Animação',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 10.0),
+                      Spacer(),
                       GenresTile(
-                        genre: 'Ação',
+                        genre: 'Comédia',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 10.0),
+                      Spacer(),
                       GenresTile(
-                        genre: 'Ação',
+                        genre: 'Drama',
+                        image: Assets.messagesError,
+                      ),
+                      Spacer(),
+                      GenresTile(
+                        genre: 'Ficção',
                         image: Assets.messagesError,
                       ),
                     ],
                   ),
                 ),
-                const Text(
-                  'Filmes em alta',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+                const SizedBox(height: 20.0),
+                Center(
+                  child: Container(
+                    width: 250,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Ver notícias sobre filmes',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                SizedBox(
-                  height: 220,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return const CardMovieTile();
-                    },
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Lançamentos em cartaz',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        'Ver mais',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                const Row(
-                  children: [
-                    Text(
-                      'Todos os filmes',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                CardMovieList(controller: controller),
+                const SizedBox(height: 20.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Em breve',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.black,
-                      size: 26,
-                    ),
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey.shade300,
-                ),
-                SizedBox(
-                  height: 220,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return const CardMovieTile();
-                    },
+                      Spacer(),
+                      Text(
+                        'Ver mais',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                const SizedBox(height: 20.0),
+                CardMovieListShortly(controller: controller),
+                const SizedBox(height: 20.0),
+                Divider(color: Colors.grey.shade300),
                 const SizedBox(height: 10.0),
-                const Row(
-                  children: [
-                    Text(
-                      'Terror',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.black,
-                      size: 26,
-                    ),
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey.shade300,
-                ),
-                SizedBox(
-                  height: 220,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return const CardMovieTile();
-                    },
-                  ),
-                ),
-                const SizedBox(height: 10.0),
-                const Row(
-                  children: [
-                    Text(
-                      'Comédia',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.black,
-                      size: 26,
-                    ),
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey.shade300,
-                ),
-                SizedBox(
-                  height: 220,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return const CardMovieTile();
-                    },
-                  ),
-                ),
               ],
-            ),
-          ),
+            );
+          }),
         ),
       ),
     );

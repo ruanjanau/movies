@@ -1,16 +1,21 @@
-import 'package:movies/app/core/dio/dio.dart';
-import 'package:movies/app/core/models/movies_model.dart';
+import 'package:dio/dio.dart';
 
-class HomeRepository {
-  final DioMockApi apiClient = DioMockApi();
-  Future<List<MovieData>> getMovies() async {
-    final response = await apiClient.dio.get('${apiClient.baseUrl}movies');
-    try {
-      return (response.data as List)
-          .map((movie) => MovieData.fromJson(movie))
-          .toList();
-    } catch (e) {
-      rethrow;
-    }
+import '../../../core/adapters/adapters.dart';
+import '../../../core/life_cycle/life_cycle.dart';
+import '../../../core/models/movies_model.dart';
+
+class HomeRepository extends RepositoryLifeCycle {
+  Future<List<MoviesModel>> getMovies() async {
+    Response? response = await httpAdapter.request(
+      httpMethod: HttpMethod.get,
+      url: 'https://6573803a063f876cec9cf9f6.mockapi.io/movies',
+      needsAuthorization: true,
+    );
+
+    return List<MoviesModel>.from(
+      (response?.data as List).map(
+        (e) => MoviesModel.fromJson(e),
+      ),
+    );
   }
 }

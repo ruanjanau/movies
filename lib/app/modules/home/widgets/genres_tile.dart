@@ -18,14 +18,17 @@ class GenresTile extends StatelessWidget {
           radius: 30,
           backgroundColor: Colors.blue,
           child: ClipOval(
-            child: Image.asset(image, fit: BoxFit.cover),
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Text(
           genre,
           style: const TextStyle(
             color: Colors.black,
-            fontSize: 20,
+            fontSize: 16,
           ),
         ),
       ],
