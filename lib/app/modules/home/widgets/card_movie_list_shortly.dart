@@ -32,6 +32,7 @@ class CardMovieListShortly extends StatelessWidget {
                 )
                 .toList();
             return CardMovieShortly(
+              //TODO: implementar tela de detalhes
               movie: movie[index],
             );
           },

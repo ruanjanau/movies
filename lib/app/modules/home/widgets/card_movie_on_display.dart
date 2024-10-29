@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:movies/app/core/models/movies_model.dart';
 
-import '../../../core/models/models.dart';
-
-class CardMovieShortly extends StatelessWidget {
+class CardMovieTile extends StatelessWidget {
   final MoviesModel movie;
   final Function()? onTap;
-  const CardMovieShortly({super.key, required this.movie, this.onTap});
+  const CardMovieTile({super.key, required this.movie, this.onTap});
 
   @override
   Widget build(BuildContext context) {
