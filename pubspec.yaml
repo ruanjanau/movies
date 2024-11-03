@@ -27,6 +27,7 @@ dependencies:
   flutter_mobx: ^2.2.1+1
   shared_preferences: ^2.3.2
   shimmer: ^3.0.0
+  youtube_player_flutter: ^9.1.1
 
 
 dev_dependencies:

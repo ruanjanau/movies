@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../core/life_cycle/life_cycle.dart';
 import 'controllers/controllers.dart';
@@ -35,6 +36,7 @@ class _DetailsPageState
         }
         return SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 height: 120.h,
@@ -90,12 +92,105 @@ class _DetailsPageState
               const SizedBox(height: 10.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Duração: ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.timer,
+                      color: Colors.yellow,
+                      size: 20.0,
+                    ),
+                    const SizedBox(width: 4.0),
+                    Text(
+                      controller.movie?.duration ?? '',
+                      style: const TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 14.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Avaliação: ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.stars,
+                      color: Colors.yellow,
+                      size: 20.0,
+                    ),
+                    const SizedBox(width: 4.0),
+                    Text(
+                      controller.movie?.stars.toString() ?? '',
+                      style: const TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 14.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
-                  controller.movie?.details ?? '',
+                  'Sinopse: ${controller.movie?.details ?? ''}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 14.0),
+              const Text(
+                'Trailler: ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 14.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: controller.youtubeController != null
+                    ? YoutubePlayer(
+                        controller: controller.youtubeController!,
+                        showVideoProgressIndicator: true,
+                      )
+                    : const Text(
+                        'Trailer não disponível',
+                        style: TextStyle(color: Colors.white),
+                      ),
+              ),
+              const SizedBox(height: 14.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'Elenco: ${controller.movie?.cast ?? ''} ',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.clip,
                   ),
                 ),
               ),

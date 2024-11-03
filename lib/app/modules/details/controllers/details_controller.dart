@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:movies/app/core/models/models.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../core/life_cycle/life_cycle.dart';
 import '../repositories/repositories.dart';
@@ -24,6 +25,9 @@ abstract class DetailsControllerBase with Store, ControllerLifeCycle {
   @observable
   bool isLoading = true;
 
+  @observable
+  YoutubePlayerController? youtubeController;
+
   @action
   void setIsLoading(bool value) => isLoading = value;
 
@@ -33,8 +37,35 @@ abstract class DetailsControllerBase with Store, ControllerLifeCycle {
       moviesList = response;
       movie = moviesList.firstWhere((element) => element.id == id,
           orElse: () => MoviesModel(id: 0, name: '', image: ''));
+
+      if (movie?.video != null) {
+        initializeYoutubePlayer(movie!.video!);
+      }
     }).whenComplete(
       () => setIsLoading(false),
     );
+  }
+
+// DetailsControllerBase
+  @action
+  void initializeYoutubePlayer(String youtubeUrl) {
+    final videoId = YoutubePlayer.convertUrlToId(youtubeUrl);
+    if (videoId != null) {
+      youtubeController = YoutubePlayerController(
+        initialVideoId: videoId,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          mute: false,
+        ),
+      );
+    } else {
+      youtubeController = null; // Garante que não inicializará com URL inválida
+    }
+  }
+
+  @override
+  void dispose() {
+    youtubeController?.dispose();
+    super.dispose();
   }
 }

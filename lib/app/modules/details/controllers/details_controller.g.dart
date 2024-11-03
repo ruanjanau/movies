@@ -57,6 +57,22 @@ mixin _$DetailsController on DetailsControllerBase, Store {
     });
   }
 
+  late final _$youtubeControllerAtom =
+      Atom(name: 'DetailsControllerBase.youtubeController', context: context);
+
+  @override
+  YoutubePlayerController? get youtubeController {
+    _$youtubeControllerAtom.reportRead();
+    return super.youtubeController;
+  }
+
+  @override
+  set youtubeController(YoutubePlayerController? value) {
+    _$youtubeControllerAtom.reportWrite(value, super.youtubeController, () {
+      super.youtubeController = value;
+    });
+  }
+
   late final _$DetailsControllerBaseActionController =
       ActionController(name: 'DetailsControllerBase', context: context);
 
@@ -72,11 +88,23 @@ mixin _$DetailsController on DetailsControllerBase, Store {
   }
 
   @override
+  void initializeYoutubePlayer(String youtubeUrl) {
+    final _$actionInfo = _$DetailsControllerBaseActionController.startAction(
+        name: 'DetailsControllerBase.initializeYoutubePlayer');
+    try {
+      return super.initializeYoutubePlayer(youtubeUrl);
+    } finally {
+      _$DetailsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 moviesList: ${moviesList},
 movie: ${movie},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+youtubeController: ${youtubeController}
     ''';
   }
 }
