@@ -15,14 +15,21 @@ class CardMovieList extends StatelessWidget {
       width: double.infinity,
       child: Observer(builder: (context) {
         if (controller.isLoading) {
-          return const SkeletonMovies();
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2.0),
+            child: SkeletonMovies(),
+          );
         }
         return ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 4,
           itemBuilder: (context, index) {
             final movie = controller.moviesList[index];
-            return CardMovieTile(movie: movie);
+            return CardMovieTile(
+              id: movie.id!,
+              name: movie.name!,
+              image: movie.image!,
+            );
           },
         );
       }),

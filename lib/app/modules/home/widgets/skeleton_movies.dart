@@ -8,25 +8,28 @@ class SkeletonMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 4,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Row(
-            children: [
-              DefaultShimmer(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4.r),
-                    color: Colors.grey,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.builder(
+          itemCount: 4,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Row(
+              children: [
+                DefaultShimmer(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4.r),
+                      color: Colors.grey,
+                    ),
+                    height: 210.h,
+                    width: 146,
                   ),
-                  height: 210.h,
-                  width: 146,
                 ),
-              ),
-              SizedBox(width: 8.w),
-            ],
-          );
-        });
+                SizedBox(width: 8.w),
+              ],
+            );
+          }),
+    );
   }
 }
