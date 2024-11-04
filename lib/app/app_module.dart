@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movies/app/modules/details/details.dart';
 
 import 'core/adapters/adapters.dart';
 import 'core/local_storage/flutter_storage/flutter_secure_storage.dart';
@@ -29,6 +30,10 @@ class AppModule extends Module {
     r.module(
       '/home/',
       module: HomeModule(),
+    );
+    r.module(
+      '/details/',
+      module: DetailsModule(),
     );
   }
 }

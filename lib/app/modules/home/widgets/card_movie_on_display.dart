@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:movies/app/core/models/movies_model.dart';
+
+import '../../../core/routes/routes.dart';
 
 class CardMovieTile extends StatelessWidget {
-  final MoviesModel movie;
+  final int id;
+  final String name;
+  final String image;
   final Function()? onTap;
-  const CardMovieTile({super.key, required this.movie, this.onTap});
+  const CardMovieTile({
+    super.key,
+    this.onTap,
+    required this.id,
+    required this.name,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () {
+          AppRoutes.goToDetails(id);
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Colors.blue,
@@ -24,7 +35,7 @@ class CardMovieTile extends StatelessWidget {
             child: Stack(
               children: [
                 Image.network(
-                  movie.image ?? '',
+                  image,
                   fit: BoxFit.cover,
                   height: 220.0,
                   width: 146.0,
@@ -34,7 +45,7 @@ class CardMovieTile extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: Container(
-                    height: 70,
+                    height: 90,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -52,7 +63,7 @@ class CardMovieTile extends StatelessWidget {
                   left: 8,
                   right: 8,
                   child: Text(
-                    movie.name ?? 'No title',
+                    name,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

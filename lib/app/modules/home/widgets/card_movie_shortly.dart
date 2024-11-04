@@ -35,7 +35,7 @@ class CardMovieShortly extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: Container(
-                    height: 70,
+                    height: 90,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
