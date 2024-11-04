@@ -14,8 +14,8 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Colors.white,
-        minimumSize: const Size(400, 50),
+        backgroundColor: Colors.black87,
+        minimumSize: const Size(200, 50),
       ),
       onPressed: onPressed,
       child: Text(
@@ -23,7 +23,7 @@ class PrimaryButton extends StatelessWidget {
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
     );

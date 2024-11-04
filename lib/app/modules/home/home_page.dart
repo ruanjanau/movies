@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/app/core/life_cycle/life_cycle.dart';
+import 'package:movies/app/core/routes/app_routes.dart';
 import 'package:movies/app/modules/home/widgets/card_movie_list_shortly.dart';
 
 import '../../core/utils/utils.dart';
@@ -91,13 +92,18 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                       ),
                     ],
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Notícias de Hollywood e Mais',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        AppRoutes.goToNews();
+                      },
+                      child: const Text(
+                        'Notícias de Hollywood e Mais',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ),
                 ),

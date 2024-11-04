@@ -1,5 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../core/routes/routes.dart';
+import '../login/lodgin.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -12,13 +16,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final nav = Navigator.of(context);
       await Future.delayed(
-        const Duration(seconds: 4),
+        const Duration(seconds: 5),
       );
-      nav.pushNamed(
-        '/login',
-      );
+      AppRoutes.goToLogin();
     });
     super.initState();
   }
@@ -27,19 +28,17 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Center(
-            child: Icon(Icons.home, size: 80.0, color: Colors.white),
+      body: AnimatedSplashScreen(
+        splash: Center(
+          child: LottieBuilder.asset(
+            'assets/lottie/splash.json',
+            width: 240,
+            height: 240,
           ),
-          const SizedBox(height: 80.0),
-          LoadingAnimationWidget.hexagonDots(
-            color: Colors.white,
-            size: 50.0,
-          ),
-        ],
+        ),
+        splashIconSize: 200,
+        backgroundColor: Colors.black87,
+        nextScreen: const LoginPage(),
       ),
     );
   }

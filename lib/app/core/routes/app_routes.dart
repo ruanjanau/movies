@@ -19,4 +19,8 @@ class AppRoutes {
       arguments: id,
     );
   }
+
+  static void goToNews() {
+    Modular.to.pushNamed('/news/');
+  }
 }
