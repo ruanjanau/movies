@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/app/core/life_cycle/life_cycle.dart';
-import 'package:movies/app/core/routes/app_routes.dart';
-import 'package:movies/app/modules/home/widgets/card_movie_list_shortly.dart';
 
+import '../../core/life_cycle/life_cycle.dart';
+import '../../core/routes/app_routes.dart';
 import '../../core/utils/utils.dart';
-import 'controllers/home_controller.dart';
-import 'widgets/card_movie_list.dart';
-import 'widgets/genres_tile.dart';
+import 'controllers/controllers.dart';
+import 'widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,6 +25,7 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

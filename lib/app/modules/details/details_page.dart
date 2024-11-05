@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/app/modules/details/details.dart';
+import 'package:movies/app/modules/details/widgets/information_component.dart';
+import 'package:movies/app/modules/details/widgets/stars_component.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../core/life_cycle/life_cycle.dart';
@@ -89,65 +92,26 @@ class _DetailsPageState
                   ],
                 ),
               ),
-              const SizedBox(height: 10.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Duração: ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.timer,
-                      color: Colors.yellow,
-                      size: 20.0,
-                    ),
-                    const SizedBox(width: 4.0),
-                    Text(
-                      controller.movie?.duration ?? '',
-                      style: const TextStyle(
-                        color: Colors.yellow,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               const SizedBox(height: 14.0),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 36.0),
                 child: Row(
-                  children: [
-                    const Text(
-                      'Avaliação: ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InformationComponent(
+                        title: 'Tipo',
+                        info: controller.movie?.category ?? '',
+                        icon: Icons.play_circle,
                       ),
-                    ),
-                    const Icon(
-                      Icons.stars,
-                      color: Colors.yellow,
-                      size: 20.0,
-                    ),
-                    const SizedBox(width: 4.0),
-                    Text(
-                      controller.movie?.stars.toString() ?? '',
-                      style: const TextStyle(
-                        color: Colors.yellow,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      StarsComponent(
+                        stars: controller.movie?.stars ?? 0,
                       ),
-                    ),
-                  ],
-                ),
+                      InformationComponent(
+                        title: 'Duração',
+                        info: controller.movie?.duration ?? '',
+                        icon: Icons.timer,
+                      ),
+                    ]),
               ),
               const SizedBox(height: 14.0),
               Padding(
@@ -163,7 +127,7 @@ class _DetailsPageState
               ),
               const SizedBox(height: 14.0),
               const Text(
-                'Trailler: ',
+                'Ultimo trailler: ',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -194,6 +158,9 @@ class _DetailsPageState
                   ),
                 ),
               ),
+              const SizedBox(height: 20.0),
+              OthersList(controller: controller),
+              SizedBox(height: 20.h),
             ],
           ),
         );

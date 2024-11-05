@@ -11,27 +11,26 @@ class GenresTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.blue,
-          child: ClipOval(
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
-            ),
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(4.0),
+        border: Border.all(
+          color: Colors.black,
+          width: 1.0,
         ),
-        Text(
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
           genre,
           style: const TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
-      ],
+      ),
     );
   }
 }

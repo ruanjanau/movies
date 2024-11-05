@@ -1,3 +1,5 @@
+import 'package:movies/app/core/models/others_model.dart';
+
 class MoviesModel {
   final int? id;
   final String? name;
@@ -10,6 +12,7 @@ class MoviesModel {
   final double? stars;
   final String? category;
   final String? video;
+  final List<OthersModel>? others;
 
   MoviesModel({
     this.id,
@@ -23,6 +26,7 @@ class MoviesModel {
     this.onDisplay,
     this.shortly,
     this.video,
+    this.others,
   });
 
   factory MoviesModel.fromJson(Map<String, dynamic> json) {
@@ -38,6 +42,9 @@ class MoviesModel {
       onDisplay: json['on_display'] as bool,
       shortly: json['shortly'] as bool,
       video: json['trailler'] as String,
+      others: (json['others'] as List?)
+          ?.map((e) => OthersModel.fromJson(e))
+          .toList(),
     );
   }
 }

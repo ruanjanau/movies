@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:movies/app/modules/home/controllers/home_controller.dart';
 
+import '../controllers/home_controller.dart';
 import '../home.dart';
 
 class CardMovieList extends StatelessWidget {
@@ -22,13 +22,17 @@ class CardMovieList extends StatelessWidget {
         }
         return ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 4,
+          itemCount: controller.moviesList
+              .where((element) => element.onDisplay == true)
+              .length,
           itemBuilder: (context, index) {
-            final movie = controller.moviesList[index];
+            final movie = controller.moviesList
+                .where((element) => element.onDisplay == true)
+                .toList();
             return CardMovieTile(
-              id: movie.id!,
-              name: movie.name!,
-              image: movie.image!,
+              id: movie[index].id!,
+              name: movie[index].name!,
+              image: movie[index].image!,
             );
           },
         );

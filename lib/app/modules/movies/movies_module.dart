@@ -1,18 +1,21 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'controllers/controllers.dart';
-import 'home_page.dart';
+import 'movies.dart';
 import 'repositories/repositories.dart';
 
-class HomeModule extends Module {
+class MoviesModule extends Module {
   @override
   void binds(i) {
-    i.add(HomeRepository.new);
-    i.addLazySingleton(HomeController.new);
+    i.add(MoviesController.new);
+    i.addLazySingleton(MoviesRepository.new);
   }
 
   @override
   void routes(RouteManager r) {
-    r.child('/', child: (context) => const HomePage());
+    r.child(
+      '/',
+      child: (context) => const MoviesPage(),
+    );
   }
 }
