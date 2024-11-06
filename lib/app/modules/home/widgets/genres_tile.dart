@@ -13,20 +13,19 @@ class GenresTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black87,
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: BorderRadius.circular(6.0),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.deepPurple,
           width: 1.0,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(6.0),
         child: Text(
           genre,
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
+            color: Colors.black,
+            fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
         ),

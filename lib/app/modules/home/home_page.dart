@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/app/core/routes/app_routes.dart';
 
 import '../../core/life_cycle/life_cycle.dart';
-import '../../core/routes/app_routes.dart';
 import '../../core/utils/utils.dart';
 import 'controllers/controllers.dart';
 import 'widgets/widgets.dart';
@@ -29,84 +29,67 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16.0),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'O que nós vamos assistir hoje?',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GenresTile(
-                      genre: 'Ação',
-                      image: Assets.messagesError,
-                    ),
-                    Spacer(),
-                    GenresTile(
-                      genre: 'Animação',
-                      image: Assets.messagesError,
-                    ),
-                    Spacer(),
-                    GenresTile(
-                      genre: 'Comédia',
-                      image: Assets.messagesError,
-                    ),
-                    Spacer(),
-                    GenresTile(
-                      genre: 'Drama',
-                      image: Assets.messagesError,
-                    ),
-                    Spacer(),
-                    GenresTile(
-                      genre: 'Ficção',
-                      image: Assets.messagesError,
-                    ),
-                  ],
+              Center(
+                child: Image.asset(
+                  Assets.logoApp,
+                  width: 200,
+                  height: 90,
                 ),
               ),
               const SizedBox(height: 20.0),
-              Center(
-                child: Container(
-                  width: 270,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        AppRoutes.goToNews();
-                      },
-                      child: const Text(
-                        'Notícias de Hollywood e Mais',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ),
+              const Center(
+                child: Text(
+                  'Generos',
+                  style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: SizedBox(
+                  height: 8.h,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: const [
+                      GenresTile(
+                        genre: 'Ação',
+                        image: Assets.messagesError,
+                      ),
+                      SizedBox(width: 16),
+                      GenresTile(
+                        genre: 'Animação',
+                        image: Assets.messagesError,
+                      ),
+                      SizedBox(width: 16),
+                      GenresTile(
+                        genre: 'Comédia',
+                        image: Assets.messagesError,
+                      ),
+                      SizedBox(width: 16),
+                      GenresTile(
+                        genre: 'Drama',
+                        image: Assets.messagesError,
+                      ),
+                      SizedBox(width: 16),
+                      GenresTile(
+                        genre: 'Ficção',
+                        image: Assets.messagesError,
+                      ),
+                      SizedBox(width: 16),
+                      GenresTile(
+                        genre: 'Terror',
+                        image: Assets.messagesError,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              NewsComponent(onTap: () => AppRoutes.goToNews()),
               const SizedBox(height: 20.0),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -115,26 +98,19 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                     Text(
                       'Lançamentos em cartaz',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.deepPurple,
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
                       ),
                     ),
                     Spacer(),
-                    Text(
-                      'Ver mais',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
+                    SeeMoreComponent(),
                   ],
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
               CardMovieList(controller: controller),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
@@ -142,27 +118,18 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                     Text(
                       'Em breve',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.deepPurple,
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
                       ),
                     ),
                     Spacer(),
-                    Text(
-                      'Ver mais',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
+                    SeeMoreComponent()
                   ],
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
               CardMovieListShortly(controller: controller),
-              const SizedBox(height: 20.0),
-              Divider(color: Colors.grey.shade300),
               const SizedBox(height: 10.0),
             ],
           ),

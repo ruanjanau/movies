@@ -11,7 +11,7 @@ class CardMovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 240,
       width: double.infinity,
       child: Observer(builder: (context) {
         if (controller.isLoading) {

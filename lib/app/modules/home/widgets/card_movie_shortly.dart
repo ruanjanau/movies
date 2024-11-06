@@ -1,22 +1,39 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/models/models.dart';
+import '../../../core/routes/routes.dart';
+import '../home.dart';
 
 class CardMovieShortly extends StatelessWidget {
-  final MoviesModel movie;
+  final int id;
+  final String name;
+  final String image;
   final Function()? onTap;
-  const CardMovieShortly({super.key, required this.movie, this.onTap});
+  const CardMovieShortly({
+    super.key,
+    required this.id,
+    required this.name,
+    required this.image,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () => AppRoutes.goToDetails(id),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(12.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: const Offset(0, 1),
+              ),
+            ],
           ),
           height: double.infinity,
           width: 146.0,
@@ -25,7 +42,7 @@ class CardMovieShortly extends StatelessWidget {
             child: Stack(
               children: [
                 Image.network(
-                  movie.image ?? '',
+                  image,
                   fit: BoxFit.cover,
                   height: 220.0,
                   width: 146.0,
@@ -48,12 +65,20 @@ class CardMovieShortly extends StatelessWidget {
                     ),
                   ),
                 ),
+                const Positioned(
+                  top: 8,
+                  left: 60,
+                  right: 8,
+                  child: WarningComponent(
+                    title: 'Em breve',
+                  ),
+                ),
                 Positioned(
                   bottom: 8,
                   left: 8,
                   right: 8,
                   child: Text(
-                    movie.name ?? 'No title',
+                    name,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

@@ -85,7 +85,7 @@ class NewsComponents extends StatelessWidget {
               const Text(
                 'Referencia: ',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.yellow),
+                    fontWeight: FontWeight.bold, color: Colors.deepPurple),
               ),
               Text(
                 reference,
@@ -100,7 +100,7 @@ class NewsComponents extends StatelessWidget {
               const Text(
                 'Data: ',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.yellow),
+                    fontWeight: FontWeight.bold, color: Colors.deepPurple),
               ),
               Text(
                 date,

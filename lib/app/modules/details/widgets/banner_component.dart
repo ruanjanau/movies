@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/app/core/ui/components/back_component.dart';
 
 import '../../../core/extensions/extensions.dart';
 
@@ -26,6 +27,10 @@ class BannerComponent extends StatelessWidget {
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
+          ),
+          const Positioned(
+            top: 50,
+            child: BackComponent(),
           ),
           Positioned(
             bottom: 0,

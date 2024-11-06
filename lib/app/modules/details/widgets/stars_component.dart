@@ -29,7 +29,7 @@ class StarsComponent extends StatelessWidget {
         Text(
           stars.toString(),
           style: const TextStyle(
-            color: Colors.yellow,
+            color: Colors.deepPurple,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

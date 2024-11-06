@@ -33,7 +33,7 @@ class InformationComponent extends StatelessWidget {
         Text(
           info,
           style: const TextStyle(
-            color: Colors.yellow,
+            color: Colors.deepPurple,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

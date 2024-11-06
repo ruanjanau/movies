@@ -71,7 +71,7 @@ class _DetailsPageState
                     const Text(
                       'Sinopse ',
                       style: TextStyle(
-                        color: Colors.yellow,
+                        color: Colors.deepPurple,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
@@ -94,7 +94,7 @@ class _DetailsPageState
                 child: Text(
                   'Ultimo trailler ',
                   style: TextStyle(
-                    color: Colors.yellow,
+                    color: Colors.deepPurple,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -113,11 +113,25 @@ class _DetailsPageState
                         style: TextStyle(color: Colors.white),
                       ),
               ),
+              const SizedBox(height: 10.0),
+              const Divider(thickness: 1.0, color: Colors.grey),
               const SizedBox(height: 14.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'Elenco',
+                  style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
-                  'Elenco: ${controller.movie?.cast ?? ''} ',
+                  controller.movie?.cast ?? '',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -130,9 +144,9 @@ class _DetailsPageState
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
-                  'Outros filmes relacionados:',
+                  'Filmes relacionados:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.deepPurple,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),

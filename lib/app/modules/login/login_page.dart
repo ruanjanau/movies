@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies/app/core/routes/routes.dart';
 
-import '../../core/ui/widgets/widgets.dart';
+import '../../core/routes/app_routes.dart';
+import '../../core/ui/components/animated_button.dart';
 import '../../core/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
@@ -16,8 +16,6 @@ class LoginPage extends StatelessWidget {
             child: Image.asset(
               Assets.login,
               fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
             ),
           ),
           SafeArea(
@@ -27,8 +25,21 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    PrimaryButton(
-                      title: 'Entrar',
+                    Image.asset(
+                      Assets.pipoca,
+                    ),
+                    const SizedBox(height: 10.0),
+                    const Text(
+                      'Prepare a pipoca',
+                      style: TextStyle(
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 30.0),
+                    AnimatedBorderButton(
+                      text: 'Vamos lá',
                       onPressed: () {
                         AppRoutes.goToHome();
                       },
