@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:movies/app/core/adapters/http_method.dart';
+
+import 'adapters.dart';
 
 abstract class HttpAdapter {
   Future<dio.Response?> request({

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
-import 'package:movies/app/core/extensions/extensions.dart';
 
-import '../ui/styles/text_styles.dart';
+import '../extensions/extensions.dart';
+import '../ui/styles/styles.dart';
 import '../utils/utils.dart';
 
 class Messages {
