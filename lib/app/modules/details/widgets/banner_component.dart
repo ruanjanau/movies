@@ -30,7 +30,9 @@ class BannerComponent extends StatelessWidget {
           ),
           const Positioned(
             top: 50,
-            child: BackComponent(),
+            child: BackComponent(
+              color: Colors.white,
+            ),
           ),
           Positioned(
             bottom: 0,

@@ -39,7 +39,7 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
               const SizedBox(height: 20.0),
               const Center(
                 child: Text(
-                  'Generos',
+                  'Gêneros',
                   style: TextStyle(
                     color: Colors.deepPurple,
                     fontSize: 20,
@@ -54,33 +54,39 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                   height: 8.h,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: const [
+                    children: [
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Ação'),
                         genre: 'Ação',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Animação'),
                         genre: 'Animação',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Comédia'),
                         genre: 'Comédia',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Drama'),
                         genre: 'Drama',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Ficção'),
                         genre: 'Ficção',
                         image: Assets.messagesError,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       GenresTile(
+                        onTap: () => AppRoutes.goToMovies('Terror'),
                         genre: 'Terror',
                         image: Assets.messagesError,
                       ),

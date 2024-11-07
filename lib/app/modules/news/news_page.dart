@@ -29,7 +29,9 @@ class _NewsPageState extends PageLifeCycleState<NewsController, NewsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const BackComponent(),
+                BackComponent(
+                  color: Colors.white,
+                ),
                 const Center(
                   child: Text(
                     'Últimas notícias',

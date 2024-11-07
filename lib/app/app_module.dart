@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movies/app/modules/details/details.dart';
+import 'package:movies/app/modules/movies/movies.dart';
 import 'package:movies/app/modules/news/news.dart';
 
 import 'core/adapters/adapters.dart';
@@ -39,6 +40,10 @@ class AppModule extends Module {
     r.module(
       '/news/',
       module: NewsModule(),
+    );
+    r.module(
+      '/movies/',
+      module: MoviesModule(),
     );
   }
 }

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BackComponent extends StatelessWidget {
-  const BackComponent({super.key});
+  final Color color;
+  const BackComponent({
+    super.key,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class BackComponent extends StatelessWidget {
         onTap: () => Navigator.pop(context),
         child: Icon(
           Icons.arrow_back_ios_new,
-          color: Colors.white,
+          color: color,
           size: 12.w,
         ),
       ),

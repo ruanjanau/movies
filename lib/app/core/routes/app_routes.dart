@@ -23,4 +23,11 @@ class AppRoutes {
   static void goToNews() {
     Modular.to.pushNamed('/news/');
   }
+
+  static void goToMovies(String? genre) {
+    Modular.to.pushNamed(
+      '/movies/',
+      arguments: genre,
+    );
+  }
 }
