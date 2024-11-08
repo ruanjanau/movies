@@ -8,7 +8,7 @@ import 'core/local_storage/flutter_storage/flutter_secure_storage.dart';
 import 'core/local_storage/local_storage.dart';
 import 'core/local_storage/shared_preferences/shared_preferences.dart';
 import 'modules/home/home.dart';
-import 'modules/login/onboarding_module.dart';
+import 'modules/onboarding/onboarding.dart';
 import 'modules/splash/splash_module.dart';
 
 class AppModule extends Module {
