@@ -69,7 +69,7 @@ class CardMovieTile extends StatelessWidget {
                 ),
                 const Positioned(
                   top: 8,
-                  left: 60,
+                  left: 50,
                   right: 8,
                   child: WarningComponent(
                     title: 'Em cartaz',

@@ -26,7 +26,7 @@ class OthersList extends StatelessWidget {
       width: double.infinity,
       child: Observer(builder: (context) {
         if (controller.isLoading) {
-          return const SkeletonMovies();
+          return const SkeletonHome();
         }
         return ListView.builder(
           scrollDirection: Axis.horizontal,

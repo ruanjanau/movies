@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:movies/app/modules/home/widgets/skeleton_movies.dart';
+import 'package:movies/app/modules/home/widgets/skeleton_home.dart';
 
 import '../controllers/controllers.dart';
 import 'card_movie_shortly.dart';
@@ -16,7 +16,7 @@ class CardMovieListShortly extends StatelessWidget {
       width: double.infinity,
       child: Observer(builder: (context) {
         if (controller.isLoading) {
-          return const SkeletonMovies();
+          return const SkeletonHome();
         }
         return ListView.builder(
           scrollDirection: Axis.horizontal,

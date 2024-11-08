@@ -10,8 +10,8 @@ class WarningComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 50,
-        height: 24,
+        width: 60,
+        height: 26,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(4.0),

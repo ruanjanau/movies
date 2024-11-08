@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/app/core/routes/app_routes.dart';
 
 import '../../core/life_cycle/life_cycle.dart';
+import '../../core/routes/routes.dart';
 import '../../core/utils/utils.dart';
 import 'controllers/controllers.dart';
 import 'widgets/widgets.dart';
@@ -36,7 +36,7 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                   height: 90,
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 14.0),
               const Center(
                 child: Text(
                   'Gêneros',
@@ -94,9 +94,9 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
               NewsComponent(onTap: () => AppRoutes.goToNews()),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
@@ -109,8 +109,6 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                         fontSize: 20,
                       ),
                     ),
-                    Spacer(),
-                    SeeMoreComponent(),
                   ],
                 ),
               ),
@@ -129,8 +127,6 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
                         fontSize: 20,
                       ),
                     ),
-                    Spacer(),
-                    SeeMoreComponent()
                   ],
                 ),
               ),

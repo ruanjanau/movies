@@ -22,9 +22,7 @@ class MoviesList extends StatelessWidget {
             .where((movie) => movie.category == genre)
             .toList();
         if (controller.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const SkeletonMovies();
         }
 
         return GridView.builder(

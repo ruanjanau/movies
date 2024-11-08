@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'controllers/controllers.dart';
 import 'movies.dart';
 import 'repositories/repositories.dart';
 

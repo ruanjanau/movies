@@ -17,7 +17,7 @@ class CardMovieList extends StatelessWidget {
         if (controller.isLoading) {
           return const Padding(
             padding: EdgeInsets.symmetric(horizontal: 2.0),
-            child: SkeletonMovies(),
+            child: SkeletonHome(),
           );
         }
         return ListView.builder(

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/ui/components/components.dart';
 
-class SkeletonMovies extends StatelessWidget {
-  const SkeletonMovies({super.key});
+class SkeletonHome extends StatelessWidget {
+  const SkeletonHome({super.key});
 
   @override
   Widget build(BuildContext context) {
