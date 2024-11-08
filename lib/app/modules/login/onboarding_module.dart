@@ -1,13 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'lodgin.dart';
+import 'onboarding.dart';
 
-class LoginModule extends Module {
+class OnboardingModule extends Module {
   @override
   void binds(i) {}
 
   @override
   void routes(RouteManager r) {
-    r.child('/', child: (context) => const LoginPage());
+    r.child('/', child: (context) => const OnboardingPage());
   }
 }

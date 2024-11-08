@@ -20,10 +20,8 @@ class CardMovieTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: GestureDetector(
-        onTap: () {
-          AppRoutes.goToDetails(id);
-        },
+      child: InkWell(
+        onTap: () => AppRoutes.goToDetails(id),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.blue,

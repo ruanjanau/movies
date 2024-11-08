@@ -4,8 +4,8 @@ import '../../core/routes/app_routes.dart';
 import '../../core/ui/components/animated_button.dart';
 import '../../core/utils/utils.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class OnboardingPage extends StatelessWidget {
+  const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      Assets.pipoca,
-                    ),
+                    Image.asset(Assets.pipoca),
                     const SizedBox(height: 10.0),
                     const Text(
                       'Prepare a pipoca',
@@ -40,9 +38,7 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: 30.0),
                     AnimatedBorderButton(
                       text: 'Vamos lá',
-                      onPressed: () {
-                        AppRoutes.goToHome();
-                      },
+                      onPressed: () => AppRoutes.goToHome(),
                     ),
                   ],
                 ),

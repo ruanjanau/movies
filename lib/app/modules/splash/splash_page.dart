@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../core/routes/routes.dart';
-import '../login/lodgin.dart';
+import '../login/onboarding.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -38,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
         ),
         splashIconSize: 200,
         backgroundColor: Colors.black87,
-        nextScreen: const LoginPage(),
+        nextScreen: const OnboardingPage(),
       ),
     );
   }
