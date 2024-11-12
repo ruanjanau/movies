@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movies/app/modules/details/details_page.dart';
 
 import 'controllers/controllers.dart';
+import 'details_page.dart';
 import 'repositories/repositories.dart';
 
 class DetailsModule extends Module {

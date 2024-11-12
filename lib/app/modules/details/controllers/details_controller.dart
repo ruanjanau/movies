@@ -46,7 +46,6 @@ abstract class DetailsControllerBase with Store, ControllerLifeCycle {
     );
   }
 
-// DetailsControllerBase
   @action
   void initializeYoutubePlayer(String youtubeUrl) {
     final videoId = YoutubePlayer.convertUrlToId(youtubeUrl);
@@ -59,7 +58,7 @@ abstract class DetailsControllerBase with Store, ControllerLifeCycle {
         ),
       );
     } else {
-      youtubeController = null; // Garante que não inicializará com URL inválida
+      youtubeController = null;
     }
   }
 
